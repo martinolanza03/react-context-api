@@ -10,23 +10,24 @@ function App() {
 
   return (
     <>
+      <PostsProvider>
+        <BrowserRouter>
+          <Routes>
 
-      <BrowserRouter>
-        <Routes>
+            <Route Component={DefaultLayout}>
+              <Route path="/" Component={HomePage} />
+              <Route path="/chi-siamo" Component={About} />
 
-          <Route Component={DefaultLayout}>
-            <Route path="/" Component={HomePage} />
-            <Route path="/chi-siamo" Component={About} />
 
-            <PostsProvider>
               <Route path="lista-post">
                 <Route index Component={PostsList} />
                 <Route path=":id" Component={PostsPage} />
               </Route>
-            </PostsProvider>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+
+      </PostsProvider>
 
 
     </>

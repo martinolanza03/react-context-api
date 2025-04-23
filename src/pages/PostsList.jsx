@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { usePosts } from "../contexts/PostsContext";
 
 function PostsList() {
+
+    const { posts } = usePosts();
 
     return <>
         <h1>Lista Post</h1>
