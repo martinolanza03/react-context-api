@@ -1,24 +1,6 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 function PostsList() {
-    const [posts, setPosts] = useState([]);
-
-    function listOfPosts() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(res => {
-                setPosts(res.data);
-
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
-    useEffect(listOfPosts, [])
-
-
 
     return <>
         <h1>Lista Post</h1>
