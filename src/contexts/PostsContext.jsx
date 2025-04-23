@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
 
 const PostsContext = createContext();
 function PostsProvider({ children }) {
@@ -28,4 +29,10 @@ function PostsProvider({ children }) {
 
 }
 
-export { PostsContext, PostsProvider };
+function usePosts() {
+    const context = useContext(PostsContext);
+    return context;
+
+}
+
+export { PostsProvider, usePosts };

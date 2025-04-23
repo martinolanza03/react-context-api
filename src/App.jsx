@@ -2,13 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
-import ListPosts from "./pages/ListPosts";
-import PostDetails from "./pages/PostDetails";
+import PostsList from "./pages/PostsList";
+import PostsPage from "./pages/PostsPage";
+import { PostsProvider } from "./contexts/PostsContext";
 
 function App() {
 
   return (
     <>
+
       <BrowserRouter>
         <Routes>
 
@@ -16,14 +18,17 @@ function App() {
             <Route path="/" Component={HomePage} />
             <Route path="/chi-siamo" Component={About} />
 
-            <Route path="lista-post">
-              <Route index Component={ListPosts} />
-              <Route path=":id" Component={PostDetails} />
-            </Route>
-
+            <PostsProvider>
+              <Route path="lista-post">
+                <Route index Component={PostsList} />
+                <Route path=":id" Component={PostsPage} />
+              </Route>
+            </PostsProvider>
           </Route>
         </Routes>
       </BrowserRouter>
+
+
     </>
   )
 }
